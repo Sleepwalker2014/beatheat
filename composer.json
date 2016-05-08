@@ -9,7 +9,7 @@
         "bootstrap-select/bootstrap-select": "dev-master"
     },
       "autoload": {
-    "classmap": ["db/"]
+    "classmap": ["db/", "php/"]
   },
     "authors": [
         {

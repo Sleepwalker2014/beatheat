@@ -13,7 +13,7 @@ $errorMessage = null;
 
 if (empty ( $_POST ['actionCode'] )) {
     if (! $sessionHandler->getSessionUser ()) {
-        $th = templateHandler::getTemplateHandler ( 'login.html', $root . 'html' );
+        $th = templateHandler::getTemplateHandler ( 'login.html.twig', $root . 'html' );
         if (! empty ( $_POST ['loginName'] ) && ! empty ( $_POST ['loginPassword'] )) {
             if ($sessionUser = UserDb::getUserByLogin ( $_POST ['loginName'], $_POST ['loginPassword'] )) {
                 $sessionHandler->setSessionUser ( $sessionUser );

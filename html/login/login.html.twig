@@ -1,3 +1,6 @@
+{% extends 'main/main.html.twig' %}
+
+{% block content %}
 <div class="container">
     <div id="loginbox" style="margin-top: 50px;"
         class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
@@ -162,4 +165,7 @@
         </div>
     </div>
 </div>
-<script src="/marcel/ums/javascript/login.js"></script>
+{% block javascript %}
+    <script src="javascript/login.js"></script>
+{% endblock %}
+{% endblock %}
