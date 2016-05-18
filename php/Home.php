@@ -1,19 +1,22 @@
 <?php
-namespace BeatHeat\Main;
+namespace BeatHeat\Home;
 
+use BeatHeat\SessionHandler;
 use BeatHeat\Template;
 
-class Main
+class Home
 {
     /**
      * @var Template $template
      */
     private $template;
-    const TEMPLATE_FILE = 'main/main.html.twig';
+
+    const TEMPLATE_FILE = 'home/home.html.twig';
 
     /**
      * Login constructor.
      * @param Template $template
+     * @param SessionHandler $sessionHandler
      */
     public function __construct(Template $template)
     {

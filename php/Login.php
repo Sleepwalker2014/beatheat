@@ -20,6 +20,7 @@ class Login
     /**
      * Login constructor.
      * @param Template $template
+     * @param SessionHandler $sessionHandler
      */
     public function __construct(Template $template, SessionHandler $sessionHandler)
     {
@@ -32,13 +33,20 @@ class Login
         echo $this->template->getHTMLAsString(self::TEMPLATE_FILE);
     }
 
+    public function handleLogin()
+    {
+        if ($this->login()) {
+            $this->getHTML();
+        }
+    }
+
     public function login()
     {
         $usersQuery = new UsersQuery();
 
         $user = $usersQuery->filterByName('Horst')
-            ->filterByPassword('Deutschrock1')
-            ->findOne();
+                           ->filterByPassword('Deutschrock1')
+                           ->findOne();
 
         if (!empty($user)) {
             $this->setUserAsSession($user);

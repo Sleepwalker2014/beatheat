@@ -1,7 +1,7 @@
 <?php
 namespace BeatHeat\MainRouter;
 
-use BeatHeat\Main\Main;
+use BeatHeat\Home\Home;
 use BeatHeat\SessionHandler;
 use BeatHeat\Template;
 
@@ -10,7 +10,8 @@ class MainRouter
     private $actionCode = null;
     private $parameters = [];
     private $actionMethodMap = ['Login' => ['class' => 'Login', 'method' => 'getHTML'],
-                                'LoginUser' => ['class' => 'Login', 'method' => 'login']];
+                                'LoginUser' => ['class' => 'Login', 'method' => 'handleLogin'],
+                                'LogoutUser' => ['class' => 'Logout', 'method' => 'handleLogout']];
     /**
      * @var Template
      */
@@ -49,10 +50,14 @@ class MainRouter
             $actionClass = new $className($this->template, $this->sessionHandler);
             $actionMethod = $this->actionMethodMap[$this->actionCode]['method'];
 
-            return $actionClass->$actionMethod();
+            $actionClass->$actionMethod();
+
+            return true;
         }
 
-        $defaultAction = new Main($this->template);
-        return $defaultAction->getHTML();
+        $defaultAction = new Home($this->template);
+        $defaultAction->getHTML();
+
+        return true;
     }
 }
