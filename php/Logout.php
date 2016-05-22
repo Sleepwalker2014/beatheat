@@ -31,6 +31,7 @@ class Logout
     public function handleLogout()
     {
         $this->sessionHandler->closeSession();
-        echo $this->template->getHTMLAsString(Home::TEMPLATE_FILE);
+
+        return true;
     }
 }

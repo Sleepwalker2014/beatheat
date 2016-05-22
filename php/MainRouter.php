@@ -11,7 +11,8 @@ class MainRouter
     private $parameters = [];
     private $actionMethodMap = ['Login' => ['class' => 'Login', 'method' => 'getHTML'],
                                 'LoginUser' => ['class' => 'Login', 'method' => 'handleLogin'],
-                                'LogoutUser' => ['class' => 'Logout', 'method' => 'handleLogout']];
+                                'LogoutUser' => ['class' => 'Logout', 'method' => 'handleLogout'],
+                                'Home' => ['class' => 'Home', 'method' => 'getHTML']];
     /**
      * @var Template
      */
@@ -40,8 +41,8 @@ class MainRouter
     {
         $user = $this->sessionHandler->getSessionUser();
 
-        if (empty($user)) {
-            $this->actionCode = 'LoginUser';
+        if (((empty($user) || empty($this->actionCode)) && $this->actionCode != 'Login')) {
+            $this->actionCode = 'Home';
         }
 
         if (isset($this->actionMethodMap[$this->actionCode])) {
@@ -51,12 +52,7 @@ class MainRouter
             $actionMethod = $this->actionMethodMap[$this->actionCode]['method'];
 
             $actionClass->$actionMethod();
-
-            return true;
         }
-
-        $defaultAction = new Home($this->template);
-        $defaultAction->getHTML();
 
         return true;
     }
