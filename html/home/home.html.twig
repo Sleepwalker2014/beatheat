@@ -7,12 +7,13 @@
         <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
     </div>
 
+    {% include 'login/login.html.twig' %}
+
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
             <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
         </ol>
 
         <!-- Wrapper for slides -->
@@ -42,6 +43,4 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-    {% block javascript %}
-    {% endblock %}
 {% endblock %}
