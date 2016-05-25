@@ -35,18 +35,24 @@ class Login
 
     public function handleLogin()
     {
-        if ($this->login()) {
+        if (!isset($_POST['loginName']) ||
+            !isset($_POST['loginPassword'])
+        ) {
+            return false;
+        }
+
+        if ($this->login($_POST['loginName'], $_POST['loginPassword'])) {
             $this->getHTML();
         }
     }
 
-    public function login()
+    public function login($userName, $password)
     {
         $usersQuery = new UsersQuery();
 
-        $user = $usersQuery->filterByName('Horst')
-                           ->filterByPassword('Deutschrock1')
-                           ->findOne();
+        $user = $usersQuery->filterByName($userName)
+            ->filterByPassword($password)
+            ->findOne();
 
         if (!empty($user)) {
             $this->setUserAsSession($user);
@@ -56,7 +62,8 @@ class Login
         return null;
     }
 
-    public function setUserAsSession ($user) {
+    public function setUserAsSession($user)
+    {
         $this->sessionHandler->setSessionUser($user);
     }
 }
