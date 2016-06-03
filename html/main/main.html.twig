@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link
-            href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css"
-            rel="stylesheet">
-    <link
-            href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
-            rel="stylesheet">
-    <meta charset="UTF-8">
-    <title>Songs für euch!</title>
-</head>
+    <head>
+        <link
+                href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css"
+                rel="stylesheet">
+        <link
+                href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+                rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+        {% block css %}{% endblock %}
 
-<body>
-<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-<script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="ajaxHandler.js" type="text/javascript"></script>
+        <meta charset="UTF-8">
+        <title>Songs für euch!</title>
+    </head>
 
-<div id="mainContent">{% block content %}{% endblock %}</div>
-</body>
+    <body>
+        <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+        <script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="ajaxHandler.js" type="text/javascript"></script>
 
-{% block javascript %}{% endblock %}
+        <div id="mainContent">{% block content %}{% endblock %}</div>
+        <footer>Impressum | AGB | Kontakt | FAQ</footer>
+    </body>
+
+    {% block javascript %}{% endblock %}
 </html>
